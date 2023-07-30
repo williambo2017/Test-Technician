@@ -1,5 +1,5 @@
 <section class="bg-secondary h-screen">
-  <div class="w-full h-[20%] header z-10 flex justify-center"></div>
+  <div class="w-full h-[20%] header z-10 flex justify-center bg-primary"></div>
 
   <main
     class="w-full h-[80%] relative bg-secondary border-solid border-2 border-cyan-400"
@@ -36,12 +36,16 @@
         </div>
       </div>
 
-      <h1 class="text-primary underline mr-3 font-semibold hover:cursor-pointer text-[18px]" (click)="clear()">clear</h1>
+      <h1
+        class="text-primary underline mr-3 font-semibold hover:cursor-pointer text-[18px]"
+        (click)="clear()"
+      >
+        clear
+      </h1>
     </header>
     <div class="w-full h-[90%] mt-3 overflow-y-auto">
       <article
-        class="w-[95%] bg-white h-auto relative p-5 mt-14 md:mt-6 mb-1 m-auto rounded-md shadow-lg shadow-primary/30 md:h-[120px] md:p-1"
-        [ngClass]="{ borderActive: active }"
+        class="w-[95%] bg-white h-auto relative p-5 mt-14 md:mt-6 mb-1 m-auto rounded-md shadow-lg shadow-primary/30 md:h-[120px] md:p-1 hover:border-l-8 border-primary"
         *ngFor="let job of listOfJobsFilter"
       >
         <img
@@ -79,26 +83,20 @@
                   FEATURED
                 </span>
               </p>
-              <h2 class="font-bold text-lg text-black">
+              <h2 class="font-bold text-lg text-black hover:cursor-pointer hover:text-[20px] hover:text-primary">
                 {{ job.position }}
               </h2>
               <ul
                 class="flex flex-wrap items-center justify-start text-primary list-disc list-inside ml-1"
               >
                 <li>
-                  <a href="#" class="mr-4 hover:underline md:mr-6">{{
-                    job.postedAt
-                  }}</a>
+                  <a class="mr-4 hover:underline md:mr-6">{{ job.postedAt }}</a>
                 </li>
                 <li>
-                  <a href="#" class="mr-4 hover:underline md:mr-6">{{
-                    job.contract
-                  }}</a>
+                  <a class="mr-4 hover:underline md:mr-6">{{ job.contract }}</a>
                 </li>
                 <li>
-                  <a href="#" class="mr-4 hover:underline md:mr-6">{{
-                    job.location
-                  }}</a>
+                  <a class="mr-4 hover:underline md:mr-6">{{ job.location }}</a>
                 </li>
               </ul>
             </div>
