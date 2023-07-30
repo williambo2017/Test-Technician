@@ -1,0 +1,60 @@
+<main class="h-screen">
+  <div class="header h-[30%] relative pt-5">
+    <h1 class="text-white text-center text-[30px] font-Rubik  my-3 font-bold">
+      IP Addres Tracker
+    </h1>
+
+    <div class="flex items-center justify-center w-[90%] m-auto">
+      <input
+        class="bg-white w-[500px] rounded-lg rounded-r-none h-[50px] p-3 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+        placeholder="Search for any IP or domain"
+        type="text"
+        [formControl]="ipTrackerControl"
+      />
+
+      <div
+        class="bg-black w-[50px] h-[50px] rounded-r-lg text-white flex items-center justify-center hover:cursor-pointer "
+        (click)="trackerIp()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14">
+          <path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6" />
+        </svg>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col items-center md:items-start h-auto mt-5 md:mt-0 md:flex-row md:justify-between md:py-5 bg-white rounded-lg w-[80%] z-20 md:h-[120px] absolute md:-bottom-16 left-[50%] translate-x-[-50%]"
+    >
+      <div class="flex flex-col justify-center items-center md:items-start gap-0 p-3">
+        <p class="text-xs text-gray-500 font-Rubik ">IP ADDRES</p>
+        <h2 class="text-[20px] text-black  font-Rubik font-semibold">{{ infoIP?.ip }}</h2>
+      </div>
+
+      <div
+        class="flex flex-col justify-center items-center md:items-start gap-0 md:border-l-2 p-3"
+      >
+        <p class="text-xs text-gray-500 ">LOCATION</p>
+        <h2 class="text-[20px] text-black  font-Rubik font-semibold">
+          {{ infoIP?.location?.region }},{{ infoIP?.location?.country }}
+        </h2>
+      </div>
+
+      <div
+        class="flex flex-col justify-center items-center md:items-start gap-0 md:border-l-2 p-3"
+      >
+        <p class="text-xs text-gray-500 font-Rubik">TIMEZONE</p>
+        <h2 class="text-[20px] text-black font-Rubik font-semibold">
+          UTC {{ infoIP?.location?.timezone }}
+        </h2>
+      </div>
+
+      <div
+        class="flex flex-col justify-center items-center md:items-start gap-0 md:border-l-2 p-3"
+      >
+        <p class="text-xs text-gray-500 font-Rubik">ISP</p>
+        <h2 class="text-[20px] text-black font-Rubik font-semibold">{{ infoIP?.isp }}</h2>
+      </div>
+    </div>
+  </div>
+  <div id="map" class="h-[70%] z-10"></div>
+</main>

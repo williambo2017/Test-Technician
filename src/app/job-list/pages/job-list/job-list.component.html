@@ -1,0 +1,134 @@
+<section class="bg-secondary h-screen">
+  <div class="w-full h-[20%] header z-10 flex justify-center"></div>
+
+  <main
+    class="w-full h-[80%] relative bg-secondary border-solid border-2 border-cyan-400"
+  >
+    <header
+      class="w-[95%] bg-white min-h-[20px] flex justify-between items-center gap-3 p-2 m-auto -mt-[20px] z-10 shadow-lg shadow-primary/30"
+      *ngIf="listOfFilter.length > 0"
+    >
+      <div class="flex items-center flex-wrap gap-3">
+        <div
+          class="w-[100px] ml-3 flex flex-row bg-secondary justify-start items-center h-[26px] relative"
+          *ngFor="let filter of listOfFilter"
+        >
+          <div class="text-primary font-Spartan ml-2">{{ filter }}</div>
+          <div
+            role="button"
+            class="bg-primary text-white w-[25px] h-[25px] mr-0 absolute top-0 right-0 hover:bg-black hover:cursor-pointer"
+            (click)="removeFilter(filter)"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="text-primary underline mr-3 font-semibold hover:cursor-pointer text-[18px]" (click)="clear()">clear</h1>
+    </header>
+    <div class="w-full h-[90%] mt-3 overflow-y-auto">
+      <article
+        class="w-[95%] bg-white h-auto relative p-5 mt-14 md:mt-6 mb-1 m-auto rounded-md shadow-lg shadow-primary/30 md:h-[120px] md:p-1"
+        [ngClass]="{ borderActive: active }"
+        *ngFor="let job of listOfJobsFilter"
+      >
+        <img
+          class="w-16 h-16 rounded-full absolute -top-8 md:hidden ease-in-out duration-300"
+          [src]="job.logo"
+          alt=""
+          srcset=""
+        />
+
+        <div
+          class="w-full h-full flex flex-col justify-center md:items-center md:flex-row md:gap-2"
+        >
+          <div
+            class="flex flex-col border-b-2 border-gray-400 mt-3 md:flex-row md:w-[60%] md:mt-0 md:border-none md:gap-10"
+          >
+            <img
+              class="rounded-full hidden md:block md:w-20 md:h-20 md:ml-6 md:mt-2 ease-in-out duration-300"
+              [src]="job.logo"
+              alt=""
+              srcset=""
+            />
+            <div class="flex flex-col gap-1">
+              <p class="font-bold text-lg text-primary">
+                {{ job.company }}
+                <span
+                  class="bg-primary text-white text-x rounded-[10px] p-[5px] font-Spartan"
+                  *ngIf="job.new"
+                >
+                  NEW!
+                </span>
+                <span
+                  class="bg-black text-center text-white text-sm rounded-[15px] p-2 ml-3 font-Spartan"
+                  *ngIf="job.featured"
+                >
+                  FEATURED
+                </span>
+              </p>
+              <h2 class="font-bold text-lg text-black">
+                {{ job.position }}
+              </h2>
+              <ul
+                class="flex flex-wrap items-center justify-start text-primary list-disc list-inside ml-1"
+              >
+                <li>
+                  <a href="#" class="mr-4 hover:underline md:mr-6">{{
+                    job.postedAt
+                  }}</a>
+                </li>
+                <li>
+                  <a href="#" class="mr-4 hover:underline md:mr-6">{{
+                    job.contract
+                  }}</a>
+                </li>
+                <li>
+                  <a href="#" class="mr-4 hover:underline md:mr-6">{{
+                    job.location
+                  }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-start gap-2 flex-wrap md:flex-row md:w-[40%] md:justify-end"
+          >
+            <div
+              class="w-auto h-[35px] flex items-center justify-center p-2 mt-3 mr-3 rounded-md bg-secondary md:justify-between md:items-center hover:cursor-pointer hover:bg-primary font-Spartan text-primary font-bold text-lg hover:text-white"
+              (click)="addFilter(job.role)"
+            >
+              <p>{{ job.role }}</p>
+            </div>
+            <div
+              class="w-auto h-[35px] flex items-center justify-center p-2 mt-3 mr-3 rounded-md bg-secondary md:justify-between md:items-center hover:cursor-pointer hover:bg-primary font-Spartan text-primary font-bold text-lg hover:text-white"
+              (click)="addFilter(job.level)"
+            >
+              <p>{{ job.level }}</p>
+            </div>
+
+            <div
+              class="w-auto h-[35px] flex items-center justify-center p-2 mt-3 mr-3 rounded-md bg-secondary md:justify-between md:items-center hover:cursor-pointer hover:bg-primary font-Spartan text-primary font-bold text-lg hover:text-white"
+              *ngFor="let language of job?.languages"
+              (click)="addFilter(language)"
+            >
+              <p>{{ language }}</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+</section>
