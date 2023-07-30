@@ -9,6 +9,6 @@ export class ListDataService {
   constructor(private http: HttpClient) {}
 
   getData(): Observable<any> {
-    return this.http.get('/assets/data.json');
+    return this.http.get('../assets/data.json');
   }
 }
