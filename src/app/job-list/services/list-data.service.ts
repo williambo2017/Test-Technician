@@ -9,6 +9,8 @@ export class ListDataService {
   constructor(private http: HttpClient) {}
 
   getData(): Observable<any> {
-    return this.http.get('../assets/data.json');
+    return this.http.get(
+      'https://raw.githubusercontent.com/williambo2017/Test-Technician/main/src/assets/data.json'
+    );
   }
 }
